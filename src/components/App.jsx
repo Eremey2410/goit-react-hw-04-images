@@ -64,10 +64,11 @@ export function App() {
   return (
     <AppContainer>
       <SearchBar onSubmit={handleSubmit} />
-      {loading && <Loader />}
       {images.length !== 0 && (
         <ImageGallery images={images} onImageClick={onImageClick} />
       )}
+      {loading && <Loader />}
+
       {images.length !== totalImages && !loading && (
         <BtnLoadMore onClick={onLoadMoreClick} />
       )}
