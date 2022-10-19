@@ -21,24 +21,26 @@ export function App() {
   const [totalImages, setTotalImages] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(
-      `${BASE_URL}?key=${API_KEY}&q=${query}&page=${page}&image_type=photo&orientation=horizontal&per_page=12`
-    )
-      .then(response => response.json())
-      .then(image => {
-        if (!image.total) {
-          return toast.error('По вашему запросу ничего не найдено');
-        }
+    if (query !== '') {
+      setLoading(true);
+      fetch(
+        `${BASE_URL}?key=${API_KEY}&q=${query}&page=${page}&image_type=photo&orientation=horizontal&per_page=12`
+      )
+        .then(response => response.json())
+        .then(image => {
+          if (!image.total) {
+            return toast.error('По вашему запросу ничего не найдено');
+          }
 
-        setImages(prevImages => [...prevImages, ...image.hits]);
+          setImages(prevImages => [...prevImages, ...image.hits]);
 
-        setTotalImages(image.total);
-      })
-      .catch(error => error)
-      .finally(() => {
-        setLoading(false);
-      });
+          setTotalImages(image.total);
+        })
+        .catch(error => error)
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }, [page, query]);
 
   const handleSubmit = imageName => {
@@ -46,7 +48,7 @@ export function App() {
     if (query === imageName) {
       return toast.error(`Вы уже просматриваете ${query}`);
     }
-    setQuery(query.toLowerCase());
+    setQuery(imageName.toLowerCase());
     setImages([]);
     setPage(1);
   };
