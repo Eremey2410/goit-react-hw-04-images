@@ -13,7 +13,6 @@ export default function SearchBar({ onSubmit }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleImageNameChange = event => {
-    console.log('event', event);
     setSearchQuery(event.currentTarget.value.toLowerCase());
   };
   const handleSubmit = event => {

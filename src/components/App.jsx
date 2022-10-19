@@ -30,7 +30,9 @@ export function App() {
         if (!image.total) {
           return toast.error('По вашему запросу ничего не найдено');
         }
+
         setImages(prevImages => [...prevImages, ...image.hits]);
+
         setTotalImages(image.total);
       })
       .catch(error => error)
@@ -97,31 +99,31 @@ export function App() {
 //     modalImage: '',
 //     totalImages: 0,
 //   };
-//   componentDidUpdate(prevProps, prevState) {
-//     if (
-//       prevState.query !== this.state.query ||
-//       prevState.page !== this.state.page
-//     ) {
-//       this.setState({ loading: true });
-//       fetch(
-//         `${BASE_URL}?key=${API_KEY}&q=${this.state.query}&page=${this.state.page}&image_type=photo&orientation=horizontal&per_page=12`
-//       )
-//         .then(response => response.json())
-//         .then(image => {
-//           if (!image.total) {
-//             return toast.error('По вашему запросу ничего не найдено');
-//           }
-//           this.setState(prevState => ({
-//             images: [...prevState.images, ...image.hits],
-//             totalImages: image.total,
-//           }));
-//         })
-//         .catch(error => error)
-//         .finally(() => {
-//           this.setState({ loading: false });
-//         });
-//     }
+// componentDidUpdate(prevProps, prevState) {
+//   if (
+//     prevState.query !== this.state.query ||
+//     prevState.page !== this.state.page
+//   ) {
+//     this.setState({ loading: true });
+//     fetch(
+//       `${BASE_URL}?key=${API_KEY}&q=${this.state.query}&page=${this.state.page}&image_type=photo&orientation=horizontal&per_page=12`
+//     )
+//       .then(response => response.json())
+//       .then(image => {
+//         if (!image.total) {
+//           return toast.error('По вашему запросу ничего не найдено');
+//         }
+//         this.setState(prevState => ({
+//           images: [...prevState.images, ...image.hits],
+//           totalImages: image.total,
+//         }));
+//       })
+//       .catch(error => error)
+//       .finally(() => {
+//         this.setState({ loading: false });
+//       });
 //   }
+// }
 //   handleSubmit = query => {
 //     if (this.state.query === query) {
 //       return toast.error(`Вы уже просматриваете ${query}`);
