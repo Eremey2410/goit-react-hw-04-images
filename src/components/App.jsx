@@ -44,7 +44,6 @@ export function App() {
   }, [page, query]);
 
   const handleSubmit = imageName => {
-    console.log('111', imageName);
     if (query === imageName) {
       return toast.error(`Вы уже просматриваете ${query}`);
     }

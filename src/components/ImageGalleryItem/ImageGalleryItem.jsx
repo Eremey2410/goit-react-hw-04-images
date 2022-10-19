@@ -2,7 +2,6 @@ import { GalleryItem, Image } from './ImageGalleryItem.styled';
 import PropTypes from 'prop-types';
 
 const ImageGalleryItem = ({ images, onImageClick }) => {
-  console.log(images);
   return (
     <>
       {images.map(({ id, webformatURL, tags }) => (
@@ -14,12 +13,8 @@ const ImageGalleryItem = ({ images, onImageClick }) => {
   );
 };
 
-// ImageGalleryItem.propTypes = {
-//   images: PropTypes.arrayOf({
-//     id: PropTypes.string.isRequired,
-//     webformatURL: PropTypes.string.isRequired,
-//     tags: PropTypes.string.isRequired,
-//   }).isRequired,
-//   onImageClick: PropTypes.func.isRequired,
-// };
+ImageGalleryItem.propTypes = {
+  images: PropTypes.array.isRequired,
+  onImageClick: PropTypes.func.isRequired,
+};
 export default ImageGalleryItem;

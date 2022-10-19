@@ -27,10 +27,10 @@ export default function ModalBox({ image, onModalClose }) {
     </Overlay>
   );
 }
-// ModalBox.propTypes = {
-//   image: PropTypes.object.isRequired,
-//   onModalClose: PropTypes.func.isRequired,
-// };
+ModalBox.propTypes = {
+  image: PropTypes.object.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+};
 
 // import { Component } from 'react';
 // import PropTypes from 'prop-types';
