@@ -22,7 +22,6 @@ export default function SearchBar({ onSubmit }) {
       return;
     }
     onSubmit(searchQuery);
-    setSearchQuery('');
   };
 
   return (
@@ -36,7 +35,7 @@ export default function SearchBar({ onSubmit }) {
           className="input"
           type="text"
           name="imageName"
-          // value={imageName}
+          value={searchQuery}
           onChange={handleImageNameChange}
           // autocomplete="off"
           // autofocus
