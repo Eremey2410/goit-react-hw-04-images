@@ -3,13 +3,18 @@ import { ImageGalleryList, GalleryItem, Image } from './ImageGallery.styled';
 import PropTypes from 'prop-types';
 
 const ImageGallery = ({ images, onImageClick }) => {
-  console.log(images);
   return (
     <>
       <ImageGalleryList>
-        {images.map(({ id, webformatURL, tags }) => (
+        {images.map(({ id, webformatURL, tags, largeImageURL }) => (
           <GalleryItem key={id}>
-            <Image src={webformatURL} alt={tags} onClick={onImageClick} />
+            <Image
+              src={webformatURL}
+              alt={tags}
+              onClick={() => {
+                onImageClick(largeImageURL);
+              }}
+            />
           </GalleryItem>
         ))}
       </ImageGalleryList>
