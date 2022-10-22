@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import { Overlay, Modal } from './Modal.styled';
 export default function ModalBox({ image, onModalClose }) {
   useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onModalClose();
+      }
+    };
     window.addEventListener('keydown', handleKeyDown);
-    return window.addEventListener('keydown', handleKeyDown);
-  });
+    return () => {
+      return window.addEventListener('keydown', handleKeyDown);
+    };
+  }, [onModalClose]);
 
-  const handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      onModalClose();
-    }
-  };
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {
       onModalClose();
